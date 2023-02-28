@@ -5,7 +5,7 @@
 int main(int argc, char* args[]) {
 	mErrorLog::init();
 	mErrorLog::stream << "message" << std::endl;
-	AppController app;
+	AppController& app = *AppController::getInstance();
 	if (!app.init()) {
 		mErrorLog::stream << "Failed to initialize app controller!" << std::endl;
 	}

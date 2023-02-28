@@ -1,6 +1,7 @@
 #include "ui.h"
 #include "keybind.h"
 #include "sceneevent.h"
+#include "appcontroller.h"
 
 bool UI::init() {
 	bool success = true;
@@ -10,12 +11,12 @@ bool UI::init() {
 }
 
 void UI::update() {
-	SDL_Event* e = new SDL_Event();
-	while (SDL_PollEvent(e)) {
-		userEventLoop.pushEvent(e);
-		e = new SDL_Event();
+	sf::RenderWindow& window = AppController::getInstance()->window;
+	sf::Event e;
+	while (window.pollEvent(e)) {
+		sf::Event* newEvent = new sf::Event(e);
+		userEventLoop.pushEvent(newEvent);
 	}
-	delete e;
 	while (userEventLoop.pullEvent());
 	while (eventLoop.pullEvent());
 	if (currScene != nullptr)

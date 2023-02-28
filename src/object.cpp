@@ -14,7 +14,7 @@ void Object::update(double delta) {
     // Drag
     applyForce(-vel * 0.1);
     // Gravity
-    applyForce(Vector(0, 0.1));
+    applyForce(Vector(0, 0.05));
 
     vel += force / mass * delta;
     force = Vector();
@@ -30,7 +30,7 @@ void Object::applyForce(const Vector& f) {
 
 void Object::draw(Drawer* d) const {
     d->setColor(200, 0, 0);
-    d->drawRect(pos - Vector(5, 5), pos + Vector(5, 5));
+    d->drawCircle(pos, 5);
 }
 
 bool Object::operator==(const Object& other) {

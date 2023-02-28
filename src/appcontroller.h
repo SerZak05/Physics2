@@ -7,7 +7,7 @@ class UI;
 
 class AppController : Subscriber<EventType, Event> {
 public:
-	AppController();
+	static AppController* getInstance();
 	~AppController();
 
 	bool init();
@@ -15,11 +15,16 @@ public:
 	void run();
 	void stop();
 
-	void cleanup();
+	static void cleanup();
 
 	void processEvent(const Event*);
 	std::list<EventType> acceptTypes() const;
+
+	sf::RenderWindow window;
 private:
+	AppController();
+	static AppController* instance;
+
 	bool Running = false;
 
 	UI mUI;

@@ -1,5 +1,5 @@
 #include "ltexture.h"
-
+/*
 #include <SDL_image.h>
 #include <iostream>
 // #include "merrors.h"
@@ -65,4 +65,4 @@ int LTexture::getWidth() const {
 
 int LTexture::getHeight() const {
 	return mHeight;
-}
+}*/

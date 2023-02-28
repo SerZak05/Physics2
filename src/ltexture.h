@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL.h>
+/*#include <SDL.h>
 #include <string>
 
 class LTexture {
@@ -22,4 +22,4 @@ private:
 
 	int mWidth;
 	int mHeight;
-};
+};*/

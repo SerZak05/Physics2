@@ -11,17 +11,17 @@ UIElem::~UIElem() {
 	}
 }
 
-void UIElem::_processEvent(const SDL_Event*) {}
+void UIElem::_processEvent(const sf::Event*) {}
 
-void UIElem::processEvent(const SDL_Event* ev) {
+void UIElem::processEvent(const sf::Event* ev) {
 	for (UIElem* child : children) {
 		child->processEvent(ev);
 	}
 	_processEvent(ev);
 }
 
-std::list<SDL_EventType> UIElem::acceptTypes() const {
-	return std::list<SDL_EventType>();
+std::list<sf::Event::EventType> UIElem::acceptTypes() const {
+	return std::list<sf::Event::EventType>();
 }
 
 void UIElem::update() {

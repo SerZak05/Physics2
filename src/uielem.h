@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL.h>
+#include <SFML/Graphics.hpp>
 #include <list>
 #include "subscriber.h"
 #include "drawer.h"
@@ -8,12 +8,12 @@
 class UI;
 
 
-class UIElem : public Subscriber<SDL_EventType, SDL_Event> {
+class UIElem : public Subscriber<sf::Event::EventType, sf::Event> {
 public:
 	UIElem(UI*);
 	virtual ~UIElem();
-	void processEvent(const SDL_Event*) final;
-	std::list<SDL_EventType> acceptTypes() const;
+	void processEvent(const sf::Event*) final;
+	std::list<sf::Event::EventType> acceptTypes() const;
 	std::list<UIElem*> children;
 
 	virtual void update();
@@ -21,6 +21,6 @@ public:
 	virtual void draw(Drawer*) const;
 protected:
 	UI* mUI;
-	virtual void _processEvent(const SDL_Event*);
+	virtual void _processEvent(const sf::Event*);
 };
 
